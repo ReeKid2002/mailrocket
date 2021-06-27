@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen and (max-width : 1000px)" href="css/phone.css">
+    <script src="https://kit.fontawesome.com/e53f16418b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div id="form-part">
+            <h1><center>Login</center></h1>
+                <form class="form-container" action="/login" method="POST">
+                    <div >
+                        <label style="margin-left: 10px;" for="Email">Email</label>
+                        <input type="email" name="username" id="email" placeholder="iamthebossdoodle.com"  required>
+                    </div>
+                    <br>
+                    <div>
+                        <label style="margin-left: 10px;" for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Enter Password"  required>
+                        <!-- <strong><p style="color: red; display: flex; justify-content: center;"><%=wrongpass%></p></strong> -->
+                        <p><a id="forgot-password" href="">Forgot Password?</a></p>
+                    </div>
+                    <br>
+                    <center><button id="btn-signin"> Log in</button></center>
+                </form>
+                <div class="hr-or">
+                    <h4>or connect with</h4>
+                </div>
+                <div class="social">
+                    <li class="social_logo" id="google"><a href="/auth/google" target="_blank"><i
+                        class="fab fa-google fa-2x"></i></a></li>
+                </div>
+                <h4 class="login"><center>Don't have an Account? <a href="/signup">Sign Up</a> </center></h4>
+
+        </div>
+    </div>
+    
+</body>
+</html>

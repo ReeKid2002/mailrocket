@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="content.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <title>Update Page</title>
+</head>
+<body>
+    <!-- navbar -->
+    <ul class="nav justify-content-end " style="background-color: rgb(235, 232, 232);">
+        <li>
+            <div style=" background-color:rgba(141, 7, 141, 0.685); color: white; padding: 0 5px 0 5px; position: relative; font-family: 'Permanent Marker', cursive; font-size: x-large; font-weight: bold; margin: 1%; display: inline-block; margin-right:56rem;">MR</div>
+        </li>
+        <li class="nav-item m-2 my-2">
+            <a href="/home"><button class="btn btn-outline-warning mx-2" data-bs-toggle="modal" style=" color:rgb(0, 0, 0); font-weight: bold; "
+                data-bs-target="#signupModal">
+                Dashboard
+            </button></a>
+        </li>
+        <li class="nav-item m-2 my-2">
+            <button type="button" class="btn btn-outline-danger mx-3 "><a class="navbutton" href="/signout"
+                    style="text-decoration: none; font-weight: bold; color: rgb(0, 0, 0);">Sign Out</a></button>
+        </li>
+    </ul>
+
+    <div style=" color: rgb(6, 123, 226);" >
+        <h1 style="font-family: 'Permanent Marker', cursive; font-weight: bold; text-align: center; margin: 1%;">Scheduled Mail Sent </h1>
+    </div>
+
+    <!-- Daily -->
+    <div style="display: flex; border: 2px sold red; margin-top: 3%;">
+        <div style=" padding-bottom: 1%; border: 2px sold red;" >
+        <button style="width: 200px;" class="btn btn-primary mx-5 " type="button" data-bs-toggle="collapse" data-bs-target="#Daily" aria-expanded="false" aria-controls="collapseExample">
+         Daily Mails
+        </button> 
+        </div>
+        <div  class="collapse.show mx-5" id="Daily">
+        <div class="card card-body" style="overflow-y: scroll; height: 27rem; position: relative;">
+         <!-- Content -->
+         <table>
+            <tr style="background-color: rgb(119, 154, 252);">
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>To</h4></th>
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>CC</h4></th>
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>Date</h4></th>
+            </tr>
+            <% if(dailyList.length===0) {%>
+                <tr>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                </tr>
+                <% } else { %>
+                    <% for( let i=dailyList.length-1; i>=0; i-- ) {%>
+            <tr>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= dailyList[i].to %></td>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= dailyList[i].cc %></td>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= dailyList[i].date %></td>
+            </tr>
+            <% } %>
+            <% } %>
+        </table>
+
+        </div>
+        </div>
+    </div>
+
+    <!-- Weekly -->
+        
+    <div style="display: flex; border: 2px sold red;  margin-top: 3%;">
+        <div style=" padding-bottom: 1%; border: 2px sold red;" >
+        <button style="width: 200px;" class="btn btn-info mx-5 " type="button" data-bs-toggle="collapse" data-bs-target="#weekly" aria-expanded="false" aria-controls="collapseExample">
+         Weekly Mails
+        </button> 
+        </div>
+        <div  class="collapse mx-5" id="weekly">
+        <div class="card card-body" style="overflow-y: scroll; height: 27rem; position: relative;">
+         <!-- Content -->
+         <table>
+            <tr style="background-color: rgb(119, 154, 252);">
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>To</h4></th>
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>CC</h4></th>
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>Date</h4></th>
+            </tr>
+            <% if(weeklyList.length===0) {%>
+                <tr>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                </tr>
+                <% } else { %>
+                    <% for( let i=weeklyList.length-1; i>=0; i-- ) {%>
+            <tr>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= weeklyList[i].to %></td>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= weeklyList[i].cc %></td>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= weeklyList[i].date %></td>
+            </tr>
+            <% } %>
+            <% } %>
+        </table>
+        </div>
+        </div>
+    </div>
+    
+    <!-- Monthly -->
+        
+    <div style="display: flex; border: 2px sold red;  margin-top: 3%;">
+        <div style=" padding-bottom: 1%; border: 2px sold red;" >
+        <button style="width: 200px;" class="btn btn-warning mx-5 " type="button" data-bs-toggle="collapse" data-bs-target="#monthly" aria-expanded="false" aria-controls="collapseExample">
+         Monthly Mails
+        </button> 
+        </div>
+        <div  class="collapse mx-5" id="monthly">
+        <div class="card card-body" style="overflow-y: scroll; height: 27rem; position: relative;">
+         <!-- Content -->
+         <table>
+            <tr style="background-color: rgb(119, 154, 252);">
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>To</h4></th>
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>CC</h4></th>
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>Date</h4></th>
+            </tr>
+            <% if(monthlyList.length===0) {%>
+                <tr>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                </tr>
+                <% } else { %>
+                    <% for( let i=monthlyList.length-1; i>=0; i-- ) {%>
+            <tr>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= monthlyList[i].to %></td>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= monthlyList[i].cc %></td>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= monthlyList[i].date %></td>
+            </tr>
+            <% } %>
+            <% } %>
+        </table>
+        </div>
+        </div>
+    </div>
+
+    <!-- Yearly -->
+        
+    <div style="display: flex; border: 2px sold red;  margin-top: 3%;">
+        <div style=" padding-bottom: 1%; border: 2px sold red;" >
+        <button style="width: 200px;" class="btn btn-secondary mx-5 " type="button" data-bs-toggle="collapse" data-bs-target="#yearly" aria-expanded="false" aria-controls="collapseExample">
+         Yearly Mails
+        </button> 
+        </div>
+        <div  class="collapse mx-5 " id="yearly">
+        <div class="card card-body" style="overflow-y: scroll; height: 27rem; position: relative;">
+         <!-- Content -->
+         <table>
+            <tr style="background-color: rgb(119, 154, 252);">
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>To</h4></th>
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>CC</h4></th>
+                <th style="width: 250px; margin-bottom: 2%; text-align: center;"><h4>Date</h4></th>
+            </tr>
+            <% if(yearlyList.length===0) {%>
+                <tr>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                    <td style="width: 250px; margin-bottom: 2%; text-align: center;"></td>
+                </tr>
+                <% } else { %>
+                    <% for( let i=yearlyList.length-1; i>=0; i-- ) {%>
+            <tr>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= yearlyList[i].to %></td>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= yearlyList[i].cc %></td>
+                <td style="width: 250px; margin-bottom: 2%; text-align: center;"><%= yearlyList[i].date %></td>
+            </tr>
+            <% } %>
+            <% } %>
+        </table>
+
+        </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

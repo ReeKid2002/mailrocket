@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <title>Update || Schedule</title> 
+    
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #form-container{
+            position: relative;
+            margin: 5% 3% 1% 3%;
+        }
+        #form-container input {
+            position: relative;
+            width: 80%;
+        }
+        #form-container label{
+            position: relative;
+            width: 100px;
+            font-weight: bold;
+        }
+        .inputs{
+            margin: 1%;
+        }
+
+        #submit-button button{
+            position: relative;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            left: 40%;
+            margin: 1%;
+            font-weight: bold;
+        }
+        #submit-button button:hover{
+            background-color: rgb(59, 59, 238);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Navbar -->
+    <ul class="nav justify-content-end " style="background-color: rgb(235, 232, 232);">
+        <li>
+            <div style=" background-color:rgba(141, 7, 141, 0.685); color: white; padding: 0 5px 0 5px; position: relative; font-family: 'Permanent Marker', cursive; font-size: x-large; font-weight: bold; margin: 1%; display: inline-block; margin-right:47rem;">MR</div>
+        </li>
+        <li class="nav-item m-2 my-2">
+            <a href="/home"><button class="btn btn-outline-warning mx-2" data-bs-toggle="modal" style=" color:rgb(0, 0, 0); font-weight: bold; "
+                data-bs-target="#signupModal">
+                Dashboard
+            </button></a>
+        </li>
+        <li class="nav-item m-2 my-2">
+            <button type="button" class="btn btn-outline-info mx-1"><a class="navbutton" href="/history"
+                    style="text-decoration: none; font-weight: bold; color: rgb(0, 0, 0);">Mail History</a></button>
+        </li>
+        <li class="nav-item m-2 my-2">
+            <button type="button" class="btn btn-outline-danger mx-3 "><a class="navbutton" href="/signout"
+                    style="text-decoration: none; font-weight: bold; color: rgb(0, 0, 0);">Sign Out</a></button>
+        </li>
+    </ul>
+
+
+    <div style=" color: rgb(6, 123, 226);" >
+        <h1 style="font-family: 'Permanent Marker', cursive; font-weight: bold; text-align: center; margin: 1%;">Update your Schedule</h1>
+    </div>
+
+    <!-- Update Form -->
+    <div id="form-container">
+        <form method="POST" action="/updatemail">
+            <div class="inputs">
+                <label for="">From :</label>
+                <input type="email" name="from" id="" value="" placeholder="<%=from%>" disabled>
+            </div>
+            <div class="inputs">
+                <label for="">To :</label>
+                <input type="email" name="to" placeholder="" value="<%=to%>">
+            </div>
+            <div class="inputs">
+                <label for="">CC :</label>
+                <input type="text" name="cc" id="" name="cc" value="<%=cc%>">
+            </div>
+            <div class="inputs">
+                <label for="">Subject :</label>
+                <input  type="text" name="subject" id="" name="subject" value="<%=subject%>">
+            </div>
+            <!-- <div class="inputs">
+                <label for="">Schedule :</label>
+                <input class="mx-1 " style="cursor: pointer; width: 25px;" type="radio" name="schedule" id="" value="daily" name="schedule"> Daily
+                <input class="mx-1 " style="cursor: pointer; width: 25px;" type="radio" name="schedule" id="" value="weekly" name="schedule"> Weekly
+                <input class="mx-1 " style="cursor: pointer; width: 25px;" type="radio" name="schedule" id="" value="monthly" name="schedule"> Monthly
+                <input class="mx-1 " style="cursor: pointer; width: 25px;" type="radio" name="schedule" id="" value="yearly" name="schedule"> Yearly
+                <br>
+            </div> -->
+            <div class="inputs">
+                <label for="" style="display: inline-block;">Message :</label>
+            <br>
+                <textarea style="position: relative; left: 9%; " id="" cols="125" rows="5" name="message"></textarea>
+            <br>
+            </div>
+            <div id="submit-button">
+                <input type="hidden" name="updateid" value="<%=id%>">
+                <input type="hidden" name="schedule" value="<%=schedule%>">
+                <button type="submit">Update Schedule</button>
+            </div>
+            
+        </form>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+                        crossorigin="anonymous"></script>
+</body>
+</html>

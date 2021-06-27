@@ -1,0 +1,341 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="content.css">
+    <title>
+        Dashboard
+    </title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #form-container {
+            position: relative;
+            margin: 1% 3% 1% 3%;
+        }
+
+        #form-container input {
+            width: 80%;
+        }
+
+        #form-container label {
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .inputs {
+            margin: 1%;
+        }
+
+        #submit-button button {
+            position: relative;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            left: 40%;
+            margin: 4%;
+            font-weight: bold;
+        }
+
+        #daily-button button {
+            position: relative;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 5px;
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+        }
+
+        #weekly-button button {
+            position: relative;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 5px;
+            background-color: rgb(218, 233, 8);
+            color: white;
+            font-weight: bold;
+        }
+
+        #monthly-button button {
+            position: relative;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 5px;
+            background-color: rgb(122, 2, 219);
+            color: white;
+            font-weight: bold;
+        }
+
+        #yearly-button button {
+            position: relative;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 5px;
+            background-color: rgb(6, 197, 6);
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <ul class="nav justify-content-end " style="background-color: rgb(235, 232, 232);">
+        <li>
+            <div
+                style=" background-color:rgba(141, 7, 141, 0.685); color: white; padding: 0 5px 0 5px; position: relative; font-family: 'Permanent Marker', cursive; font-size: x-large; font-weight: bold; margin: 1%; display: inline-block; margin-right:47rem;">
+                MR</div>
+        </li>
+        <li class="nav-item m-2 my-2">
+            <button class="btn btn-outline-warning mx-2" data-bs-toggle="modal"
+                style=" color:rgb(0, 0, 0); font-weight: bold; " data-bs-target="#signupModal">
+                Create Mail
+            </button>
+        </li>
+        <li class="nav-item m-2 my-2">
+            <button type="button" class="btn btn-outline-info mx-1"><a class="navbutton" href="/history"
+                    style="text-decoration: none; font-weight: bold; color: rgb(0, 0, 0);">Mail History</a></button>
+        </li>
+        <li class="nav-item m-2 my-2">
+            <button type="button" class="btn btn-outline-danger mx-3 "><a class="navbutton" href="/signout"
+                    style="text-decoration: none; font-weight: bold; color: rgb(0, 0, 0);">Sign Out</a></button>
+        </li>
+    </ul>
+
+    <div style=" color: rgb(6, 123, 226);">
+        <h1 style="font-family: 'Permanent Marker', cursive; font-weight: bold; text-align: center; margin: 1%;">Welcome
+            <%=userName%>
+        </h1>
+    </div>
+    <div>
+        <h2
+            style="font-family: 'Caveat', cursive; text-decoration: underline; font-weight: bold;  margin: 3%; margin-right: 2%; position: relative; ">
+            Scheduled Mails
+        </h2>
+    </div>
+
+    <ul class="nav nav-tabs m-5 my-4 ">
+        <li class="nav-item " style=" position: relative; width: 18rem; ">
+            <a class="nav-link" data-bs-toggle="collapse" aria-current="page" aria-expanded="false" href="#daily-mail"
+                style="font-weight: bold; text-align: center;">Daily</a>
+        </li>
+        <li class="nav-item" style=" position: relative; width: 18rem;">
+            <a class="nav-link" href="#weekly-mail" data-bs-toggle="collapse" aria-expanded="false"
+                style="font-weight: bold; text-align: center;">Weekly</a>
+        </li>
+        <li class="nav-item" style="position: relative; width: 18rem;">
+            <a class="nav-link" href="#monthly-mail" data-bs-toggle="collapse" aria-expanded="false"
+                style="font-weight: bold; text-align: center;">Monthly</a>
+        </li>
+        <li class="nav-item" style="position: relative; width: 18rem;">
+            <a class="nav-link" href="#yearly-mail" data-bs-toggle="collapse" aria-expanded="false"
+                style="font-weight: bold; text-align: center;">Yearly</a>
+        </li>
+    </ul>
+
+    <div id="daily-mail" class=" mx-5 collapse.show shadow" style="overflow-y: scroll; max-height: 50%;">
+        <ul class="list-group list-group-flush mx-5 ">
+            <h2>Daily Mails</h2>
+            <% if(dailyList.length===0) {%>
+                <li class="list-group-item">No Mail Scheduled</li>
+                <% } else { %>
+                    <% for( let i=0; i<dailyList.length; i++) {%>
+                        <li style="display: flex; justify-content: space-evenly;" class="list-group-item">
+                            <div>
+                                Email: <%= dailyList[i].to %>
+                            </div>
+                            <div id="daily-button">
+                                <form action="/update" method="post">
+                                    <input type="hidden" name="updateid" value="<%=dailyList[i]._id%>">
+                                    <button type="submit">Update</button>
+                                </form>
+                            </div>
+                            <div><form action="/delete" method="post">
+                                <input type="hidden" name="updateid" value="<%=dailyList[i]._id%>">
+                                <input type="hidden" name="schedule" value="daily">
+                                <button type="submit" class="btn-close" aria-label="Close"></button>
+                            </form></div>
+                        </li>
+                        <% } %>
+                            <% } %>
+        </ul>
+    </div>
+
+    <div id="weekly-mail" class="collapse shadow mx-5 my-4" style="overflow-y: scroll; max-height: 50%;">
+        <ul class="list-group list-group-flush mx-5">
+            <h2>Weekly Mails</h2>
+            <% if(weeklyList.length===0) {%>
+                <li class="list-group-item">No Mail Scheduled</li>
+                <% } else { %>
+                    <% for( let i=0; i<weeklyList.length; i++) {%>
+                        <li style="display: flex; justify-content: space-evenly;" class="list-group-item">
+                            <div>
+                                Email: <%= weeklyList[i].to %>
+                            </div>
+                            <div id="weekly-button">
+                                <form action="/update" method="post">
+                                    <input type="hidden" name="updateid" value="<%=weeklyList[i]._id%>">
+                                    <button type="submit">Update</button>
+                                </form>
+                            </div>
+                            <div><form action="/delete" method="post">
+                                <input type="hidden" name="updateid" value="<%=weeklyList[i]._id%>">
+                                <input type="hidden" name="schedule" value="weekly">
+                                <button type="submit"><button type="button" class="btn-close" aria-label="Close"></button></button>
+                            </form></div>
+                        </li>
+                        <% } %>
+                            <% } %>
+        </ul>
+    </div>
+
+    <div id="monthly-mail" class="collapse shadow-lg mx-5 my-4" style="overflow-y: scroll; max-height: 50%;">
+        <ul class="list-group list-group-flush mx-5">
+            <h2>Monthly Mails</h2>
+            <% if(monthlyList.length===0) {%>
+                <li class="list-group-item">No Mail Scheduled</li>
+                <% } else { %>
+                    <% for( let i=0; i<monthlyList.length; i++) {%>
+
+                        <li style="display: flex; justify-content: space-evenly;" class="list-group-item">
+                            <div>
+                                Email: <%= monthlyList[i].to %>
+                            </div>
+                            <div id="monthly-button">
+                                <form action="/update" method="post">
+                                    <input type="hidden" name="updateid" value="<%=monthlyList[i]._id%>">
+                                    <button type="submit">Update</button>
+                                </form>
+                               
+                            </div>
+                            <div> <form action="/delete" method="post">
+                                <input type="hidden" name="updateid" value="<%=monthlyList[i]._id%>">
+                                <input type="hidden" name="schedule" value="monthly">
+                                <button type="submit" class="btn-close" aria-label="Close"></button>
+                            </form></div>
+                        </li>
+
+                        <% } %>
+                            <% } %>
+        </ul>
+    </div>
+
+    <div id="yearly-mail" class="collapse shadow-lg mx-5 my-4" style="overflow-y: scroll; max-height: 50%;">
+        <ul class="list-group list-group-flush mx-5">
+            <h2>Yearly Mails</h2>
+            <% if(yearlyList.length===0) {%>
+                <li class="list-group-item">No Mail Scheduled</li>
+                <% } else { %>
+                    <% for( let i=0; i<dailyList.length; i++) {%>
+
+                        <li style="display: flex; justify-content: space-evenly;" class="list-group-item">
+                            <div>
+                                Email: <%= yearlyList[i].to %>
+                            </div>
+                            <div id="yearly-button">
+                                <form action="/update" method="post">
+                                    <input type="hidden" name="updateid" value="<%=yearlyList[i]._id%>">
+                                    <button type="submit">Update</button>
+                                </form>
+                               
+                            </div>
+                            <div>
+                                <form action="/delete" method="post">
+                                    <input type="hidden" name="schedule" value="yearly">
+                                    <input type="hidden" name="updateid" value="<%=yearlyList[i]._id%>">
+                                    <button type="submit" class="btn-close" aria-label="Close"></button>
+                                </form>
+                            </div>
+                        </li>
+                        <% } %>
+                            <% } %>
+        </ul>
+    </div>
+    </div>
+    </div>
+
+
+
+    <!-- Scheduled Mail Modal -->
+    <div class="modal" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="signupModalLabel"
+                        style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  font-weight: bold;">
+                        Schedule Your Mail</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="form-container">
+                        <form method="POST" action="/createmail">
+                            <div class="inputs">
+                                <label for="">From :</label>
+                                <input type="email" name="from" id="" value="" placeholder="<%=from%>" disabled>
+                            </div>
+                            <div class="inputs">
+                                <label for="">To :</label>
+                                <input type="email" name="to" placeholder="">
+                            </div>
+                            <div class="inputs">
+                                <label for="">CC :</label>
+                                <input type="text" name="cc" id="" name="cc">
+                            </div>
+                            <div class="inputs">
+                                <label for="">Subject :</label>
+                                <input type="text" name="subject" id="" name="subject">
+                            </div>
+                            <div class="inputs">
+                                <label for="">Schedule :</label>
+                                <input class="mx-1 " style="cursor: pointer; width: 25px;" type="radio" name="schedule"
+                                    id="" value="daily" name="schedule"> Daily
+                                <input class="mx-1 " style="cursor: pointer; width: 25px;" type="radio" name="schedule"
+                                    id="" value="weekly" name="schedule"> Weekly
+                                <input class="mx-1 " style="cursor: pointer; width: 25px;" type="radio" name="schedule"
+                                    id="" value="monthly" name="schedule"> Monthly
+                                <input class="mx-1 " style="cursor: pointer; width: 25px;" type="radio" name="schedule"
+                                    id="" value="yearly" name="schedule"> Yearly
+                                <br>
+                            </div>
+                            <div class="inputs">
+                                <label for="" style="display: inline-block;">Message :</label>
+                                <br>
+                                <textarea style="position: relative; left: 7%; " id="" cols="12" rows="5"
+                                    name="message"></textarea>
+                                <br>
+                            </div>
+                            <div id="submit-button">
+                                <button type="submit">Add To Schedule</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+                        crossorigin="anonymous"></script>
+</body>
+
+</html>

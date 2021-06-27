@@ -1,0 +1,135 @@
+body{
+    margin: 10px;
+    padding: 0;
+    background: url('../images/background.png');
+    background-size: cover;
+}
+
+.container{
+    
+    position: relative;
+    height: 90%;
+    width: 40%;
+    margin: auto;
+    margin-top: 3%;
+    background-color:azure;
+    display: flex;
+    justify-content:space-around;
+    border-radius: 40px;
+}
+
+.left{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.left img{
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+
+
+}
+.right{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#form-part{
+    position: relative;
+    padding: 0px 100px 0px 100px;
+    height: 90%;
+    width: 80%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.social-logo{
+    text-decoration: none;
+}
+.form-container input{
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin: 7px;
+}
+#email{
+    background-color: rgb(189, 250, 252);
+}
+#password{
+    background-color: rgb(241, 216, 235);
+}
+#forgot-password{
+    text-decoration: none; 
+    color: blue;
+    position: absolute;
+    left: 62%;
+    padding-bottom: 10px;
+
+}
+.hr-or h4{
+    padding-top: 15px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+
+.hr-or h4::before{
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    left: 0;
+    top: 75%;
+    /* z-index: -1; */
+}
+.hr-or h4::after{
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    right: 0;
+    top: 75%;
+    /* z-index: -1; */
+}
+
+
+.social{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.social i{
+    padding: 30px;
+}
+.social li:hover{
+    cursor: pointer;
+}
+.login a{
+    text-decoration: none;
+    color: rgb(65, 238, 238);
+}
+#btn-signin{
+    margin-top: 5%;
+    padding: 10px 50px 10px 50px;
+    border: none;
+    border-radius: 5px;
+    color: aliceblue;
+    background-color: rgb(27, 102, 240);
+    font-weight: bold;
+}
+#btn-signin:hover{
+    background-color: rgb(87, 142, 243);
+    cursor: pointer;
+}
+
