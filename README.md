@@ -1,4 +1,4 @@
-# mailrocket
+# Mailrocket
 This Project is made by Divi Osho(Team Leader), Rahul Behera and Rajveer Kumar.
 This Project was made using MERN Stack.
 This project is based on the concept of sending Mail in a particular time intervals like daily, weekly, monthly, and yearly.
